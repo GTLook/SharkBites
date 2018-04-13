@@ -89,7 +89,7 @@ function gatherData(){
   userPay.billZip = billCity.value
   userPay.billState = billState.value
   userPay.billZip = billZip.value
-  if(user.rememberMe) localStorage.setItem('data',JSON.stringify(user))
+  if(user.rememberMe) localStorage.setItem('userdata',JSON.stringify(user))
 }
 
 sameBilling.addEventListener("click", () => {
@@ -109,7 +109,6 @@ sameBilling.addEventListener("click", () => {
 })
 
 const recipt = document.querySelector('#recipt')
-recipt.value = `Shipping Info\n${shipAddress}\n${shipCity}\n${shipState}, ${shipZip} \n\nBilling Address\n${billAddress}\n${billCity}\n${billState}, ${billZip}`
 
 const cardNumberField = document.querySelector('#card-number-field')
 cardNumberField.addEventListener('blur', () => {
@@ -121,7 +120,30 @@ cardNumberField.addEventListener('blur', () => {
   }
 })
 
+const submitButton = document.querySelector('#pay-now')
+const errorchecking = document.querySelector('#errorHere')
+const errorBox = document.querySelector('#errorBox')
+submitButton.addEventListener('click', () => {
 
+   if(!(name.value)||!(email.value)){
+     errorBox.classList.remove('d-none')
+     infoShow.classList.remove('d-none')
+     errorHere.innerHTML = 'Please fill out your name and email address!'
+   }
+   if(!(shipAddress)||!(shipCity)||!(shipState)||!(shipZip)){
+     errorBox.classList.remove('d-none')
+     shipShow.classList.remove('d-none')
+     errorHere.innerHTML = 'Please check your shipping information!'
+   }
+   if(!(billAddress)||!(billCity)||!(billState)||!(billZip)){
+     errorBox.classList.remove('d-none')
+     billShow.classList.remove('d-none')
+     errorHere.innerHTML = 'Please check your billing information'
+}
+else{
+  recipt.innerHTML = `Shipping Info${name.value}\n${shipAddress.value}\n${shipCity.value}\n${shipState.value}, ${shipZip.value} \n\nBilling Address\n${billAddress.value}\n${billCity.value}\n${billState.value}, ${billZip.value}`
+  confirmShow.classList.remove('d-none')
+}
+})
 
-
-JSON.parse(localStorage.getItem('data'))
+JSON.parse(localStorage.getItem('userdata'))

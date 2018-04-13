@@ -7,7 +7,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Checkout Page</title>
 
-  <!-- <script defer src="JS/main.js"></script> -->
+  <script defer src="JS/main.js"></script>
   <script defer src="JS/checkout.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -97,7 +97,7 @@
               <div class="form-group row">
                 <div class="col-10">
                   <label for="example-text-input" class=" col-form-label">Zip Code</label>
-                  <input class="form-control" type="number" placeholder="Zip Code" required id='shipZip'>
+                  <input class="form-control" maxlength='5' type="number" placeholder="Zip Code" required id='shipZip'>
                 </div>
               </div>
               <label class="custom-control custom-checkbox mb-2" >
@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-6">
                   <label for="zip code" class=" col-form-label">Zip Code</label>
-                  <input class="form-control" type="number" placeholder="Zip Code" required id='billZip'>
+                  <input class="form-control" maxlength='5' type="number" placeholder="Zip Code" required id='billZip'>
                 </div>
 
                 <div class="payment">
@@ -179,6 +179,12 @@
                   </div>
                   <div class="form-group" id="pay-now">
                     <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+                  </div>
+                </div>
+                <div class='row text-center'>
+                  <div class="col-10 d-none" id='errorBox'>
+                    <h4>Woah! something went wrong.  Hold on for a bite</h4>
+                    <span id='errorHere' class='text-center'> </span>
                   </div>
                 </div>
               </div>
