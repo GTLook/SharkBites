@@ -7,7 +7,8 @@ class ProductList{
 
   static renderCard(cardData, cb, showData){
     const card = document.createElement('div')
-    addClassesToElement(card, 'card', 'col-sm-12', 'col-md-6')
+    card.style = "display:block"
+    addClassesToElement(card, 'card', 'col-sm-12', 'col-md-6', cardData.meal)
 
     const img = document.createElement('img')
     addClassesToElement(img, 'card-img-top')

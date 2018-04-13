@@ -83,6 +83,7 @@ const products = [
     {
       id: 11,
       name:'Fishing for Donuts' ,
+      meal: 'drinks',
       image: ('https://s-media-cache-ak0.pinimg.com/originals/22/79/4b/22794b4da74028a5d574acde64f94718.jpg'),
       price: 5,
       description: 'A delightful combination of our signature coffee blend and donut holes!'

@@ -17,11 +17,7 @@
   <script defer src="/JS/classes/CartList.js"></script>
   <script defer src="/JS/classes/ProductList.js"></script>
   <script defer src="/JS/app.js"></script>
-  <script defer src="/JS/main.js"></script>
-
-
   <link rel="stylesheet" type="text/css" href="CSS/styles.css">
-  <script defer src="JS/main.js"></script>
 </head>
 
 <body>
@@ -53,24 +49,25 @@
         <br>
         <br>
         <div class="list-group">
-          <a href="#" class="list-group-item active">Breakfast</a>
-          <a href="#" class="list-group-item">Lunch</a>
-          <a href="#" class="list-group-item">Dessert</a>
-          <a href="#" class="list-group-item">Drinks</a>
+          <button id="allButton" type="button" class="btn-lg btn-outline-dark" active>All Bites</button>
+          <button id="breakfastBites" type="button" class="btn-lg btn-outline-dark">Breakfast Bites</button>
+          <button id="lunchBites" type="button" class="btn-lg btn-outline-dark">Lunch Bites</button>
+          <button id="dessertBites" type="button" class="btn-lg btn-outline-dark">Dessert Bites</button>
+          <button id="drinks" type="button" class="btn-lg btn-outline-dark">Drink Gulps</button>
         </div>
-<br>
-<br>
-    <container>
-      <div class="creditCardForm">
-        <h1>Shoppping Cart</h1>
-        <div class="cart">
-          <!-- render here -->
-        </div>
+        <br>
+        <br>
+        <container>
+          <div class="creditCardForm">
+            <h1>Shoppping Cart</h1>
+            <div class="cart">
+              <!-- render here -->
+            </div>
+          </div>
+        </container>
       </div>
-    </container>
+    </div>
   </div>
-  </div>
-</div>
 
   <footer class="footer">
     <div class="container-fluid text-center tex-md-left">
