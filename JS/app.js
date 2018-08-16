@@ -5,7 +5,6 @@ function addToCartEventHandler(cart) {
   }
 }
 
-
 const myCart = new CartList(
   document.querySelector('.cart')
 )
@@ -18,17 +17,12 @@ const myProducts = new ProductList(
 // start rendering page
 myProducts.render()
 
-
-
 document.querySelector('form').addEventListener("submit", function(event) {
   event.preventDefault()
   form.innerHTML = "Congrats you are now in the loop for all future SharkBite News!"
 })
 
 const productList = document.querySelector('.products')
-// let allproducts = for (let i = 0; i < productsList.length; i++) {
-//                         productsList[i].style.display = "block"
-//                           }
 const breakfastList = document.querySelector('.products').getElementsByClassName('breakfast');
 
 function removeBreakfast() {
@@ -36,6 +30,7 @@ function removeBreakfast() {
     breakfastList[i].style.display = "none"
   }
 }
+
 function addBreakfast() {
   for (let i = 0; i < breakfastList.length; i++) {
     breakfastList[i].style.display = "block"
@@ -49,6 +44,7 @@ function removeLunch() {
     lunchList[i].style.display = "none"
   }
 }
+
 function addLunch() {
   for (let i = 0; i < lunchList.length; i++) {
     lunchList[i].style.display = "block"
@@ -85,10 +81,10 @@ function addDrinks() {
 
 
 document.querySelector('#allButton').addEventListener("click", function(event) {
-addBreakfast()
-addLunch()
-addDressert()
-addDrinks()
+  addBreakfast()
+  addLunch()
+  addDressert()
+  addDrinks()
 })
 
 document.querySelector('#breakfastBites').addEventListener("click", function(event) {

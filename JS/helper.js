@@ -1,15 +1,13 @@
-//////////////////////////////////////////
 // Helper functions
-//////////////////////////////////////////
 
-function empty(element){
-  while(element.firstChild){
+function empty(element) {
+  while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
   return element
 }
 
-function appendChildrenArray(parent, childrenArray){
+function appendChildrenArray(parent, childrenArray) {
   childrenArray.reduce((parentNode, child) => {
     parentNode.appendChild(child)
     return parentNode
@@ -17,7 +15,7 @@ function appendChildrenArray(parent, childrenArray){
   return parent
 }
 
-function addClassesToElement(element, ...classes){
+function addClassesToElement(element, ...classes) {
   return classes.reduce((acc, ele) => {
     element.classList.add(ele)
     return acc

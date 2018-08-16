@@ -1,7 +1,7 @@
-class CartList{
-  constructor(elementToRenderIn){
+class CartList {
+  constructor(elementToRenderIn) {
     this.elementToRenderIn = elementToRenderIn
-    if (JSON.parse(localStorage.getItem('data'))){
+    if (JSON.parse(localStorage.getItem('data'))) {
       this.cart = JSON.parse(localStorage.getItem('data'))
       this.render()
     } else {
@@ -9,12 +9,11 @@ class CartList{
     }
   }
 
-  addItemToCart(item){
+  addItemToCart(item) {
     // check for duplicates
-    if(this.cart.hasOwnProperty(item.id)){
+    if (this.cart.hasOwnProperty(item.id)) {
       this.cart[item.id].quantity += 1
-    }
-    else {
+    } else {
       item.index = Object.keys(this.cart).length
       item.quantity = 1
       this.cart[item.id] = item
@@ -22,20 +21,19 @@ class CartList{
     return this
   }
 
-  removeItemFromCart(item){
-    if(this.cart[item.id].quantity>1){
+  removeItemFromCart(item) {
+    if (this.cart[item.id].quantity > 1) {
       this.cart[item.id].quantity -= 1
-    }
-    else {
+    } else {
       delete this.cart[item.id]
     }
   }
 
-  static renderCartItem(item,removeItem){
+  static renderCartItem(item, removeItem) {
     const li = document.createElement('li')
     addClassesToElement(li, 'list-group-item', 'd-flex', 'justify-content-between', 'lh-condensed')
 
-    li.addEventListener('click',function (){
+    li.addEventListener('click', function() {
       removeItem(item)
     })
 
@@ -61,7 +59,7 @@ class CartList{
 
   }
 
-  renderTotal(){
+  renderTotal() {
     const li = document.createElement('li')
     addClassesToElement(li, 'list-group-item', 'd-flex', 'justify-content-between')
 
@@ -76,32 +74,31 @@ class CartList{
     return li
   }
 
-  calculateTotalPrice(){
-    return Object.values(this.cart).reduce((acc, ele) => acc + (ele.price * ele.quantity),0)
+  calculateTotalPrice() {
+    return Object.values(this.cart).reduce((acc, ele) => acc + (ele.price * ele.quantity), 0)
   }
 
-  calculateTotalItems(){
-    return Object.values(this.cart).reduce((acc, ele) => acc + ele.quantity,0)
+  calculateTotalItems() {
+    return Object.values(this.cart).reduce((acc, ele) => acc + ele.quantity, 0)
   }
 
 
   // impure method
-  render(){
+  render() {
     document.querySelector('#cartcounter').innerHTML = `${this.calculateTotalItems()}`
-    const sortedByIndexCart = Object.values(this.cart).sort((a,b) => a.index - b.index)
+    const sortedByIndexCart = Object.values(this.cart).sort((a, b) => a.index - b.index)
 
     const cartIncludingTotal = [...sortedByIndexCart.map((product) =>
       CartList.renderCartItem(product, (item) => {
         this.removeItemFromCart(item)
         this.render()
-      }))
-      , this.renderTotal()]
+      })), this.renderTotal()]
     // modifying the DOM
     empty(this.elementToRenderIn)
     appendChildrenArray(this.elementToRenderIn, cartIncludingTotal)
 
     //console.log(sortedByIndexCart)
-    localStorage.setItem('data',JSON.stringify(this.cart))
+    localStorage.setItem('data', JSON.stringify(this.cart))
 
-    }
+  }
 }
